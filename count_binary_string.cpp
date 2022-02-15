@@ -96,6 +96,7 @@ int main(){
     string str;
     cout<<"enter a binary string:";
     cin>>str;
+    
     int size=str.length();
     
     counting_single_bits(str,size);
