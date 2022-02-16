@@ -15,12 +15,23 @@ double calculateEntropy(string str, int size,int start,int end)
 }
 int main()
 {
-    string str;
-    cout << "enter a binary string : ";
-    cin >> str;
+    string str="";
+    ifstream Input_value;
+    Input_value.open("input.csv");
+    cout<<"the string is: ";
+    
+    while(Input_value.eof()==0){
+        getline(Input_value,str);
+        cout<<str<<endl;
+        Input_value.close();
+    }
+
+    ofstream output;
+    output.open("Outputt.csv");
+    
 
     int  window_size;
-    cout<<"enter the window size : ";
+    cout<<endl<<"enter the window size : ";
     cin>>window_size;
     int no_ofWindows=0;
     for(int i=0;i<str.size();i++){
@@ -31,9 +42,10 @@ int main()
     }
     int end=window_size;
     for(int i=0;i<no_ofWindows;i++){
-        cout<<"entropy "<<i+1<<": " <<calculateEntropy(str,str.size(),i,end)<<endl;
+        output<<"entropy "<<i+1<<": " <<calculateEntropy(str,str.size(),i,end)<<endl;
         end++;
     }
+    output.close();
 
 
     return 0;
