@@ -1,14 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-double calculateEntropy(string str, int size,int start,int end)
+double calculateEntropy(string str, int size,int start,int end,int window_size)
 {   
     int count=0;
     for(int i=start;i<end;i++){
         if(str[i]=='1')
         count++;
     }
-    double probability=(double)count/size;
+    double probability=(double)count/window_size;
     double p=probability/size;
     return -((p) * log2f(p));
     
@@ -42,7 +42,7 @@ int main()
     }
     int end=window_size;
     for(int i=0;i<no_ofWindows;i++){
-        output<<"entropy "<<i+1<<": " <<calculateEntropy(str,str.size(),i,end)<<endl;
+        output<<"entropy "<<i+1<<": " <<calculateEntropy(str,str.size(),i,end,window_size)<<endl;
         end++;
     }
     output.close();
