@@ -31,9 +31,10 @@ double tsallis_Entropy(double window_size,string str){
         }
         
         
-        probability=count/window_size;
+        probability=pow((count/window_size),2);
     
             total_probabilty_sum+=probability;
+
             
         start++;
         end++;
@@ -49,7 +50,7 @@ string str="";
 ifstream input_value;
 input_value.open("input.csv");
 cout<<" The string is"<<" ";
-
+double q=2;
 //string input--------->
 while(input_value.eof()==0){
     getline(input_value,str);
