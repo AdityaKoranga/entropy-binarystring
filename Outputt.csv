@@ -1,3 +1,8 @@
-tsallis entropy for q=2 is = 0.25
-tsallis entropy for q=3 is = 0.3125
-tsallis entropy for q=4 is = 0.270833
+entropy 1is 0.389975
+entropy 2is 0.528321
+entropy 3is 0.389975
+entropy 4is 0.528321
+entropy 5is 0.389975
+entropy 6is 0.389975
+entropy 7is 0
+entropy 8is 0
