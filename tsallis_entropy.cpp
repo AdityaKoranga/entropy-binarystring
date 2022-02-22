@@ -1,9 +1,15 @@
 #include<bits/stdc++.h>
 using namespace std;
+//final formula
+double answer(double q,double total_probabilty_sum){
+    cout<<q;
+    double ans=(1/(q-1))*(1-total_probabilty_sum);
+    return ans;
+}
 
 
-
-double tsallis_Entropy(double window_size,string str){
+double tsallis_Entropy(double window_size,string str,double q){
+    
        //to find the no. of windows--->
     int no_ofWindows=0;
     for(int i=0;i<str.size();i++){
@@ -12,7 +18,6 @@ double tsallis_Entropy(double window_size,string str){
         no_ofWindows++;
         
     }
-    
 
     //to find total sum of probability
     int start=0,end=start+window_size-1;
@@ -31,7 +36,7 @@ double tsallis_Entropy(double window_size,string str){
         }
         
         
-        probability=pow((count/window_size),2);
+        probability=pow((count/window_size),q);
     
             total_probabilty_sum+=probability;
 
@@ -42,7 +47,7 @@ double tsallis_Entropy(double window_size,string str){
     }
     
 
-        return total_probabilty_sum;
+        return answer(q,total_probabilty_sum);
 }
 
 int main(){
@@ -62,10 +67,10 @@ output_value.open("Outputt.csv");
 double window_size;
 cout<<"enter window size ";
 cin>>window_size;
-double ans=tsallis_Entropy(window_size,str);
+
 
 for(double q=2;q<=4;q++){
-    output_value<<"tsallis entropy for q="<<q<<" is = "<<(1 / (q-1) )*(1 - ans)<<endl;
+    output_value<<"tsallis entropy for q="<<q<<" is = "<<tsallis_Entropy(window_size,str,q)<<endl;
 
     }
 output_value.close();
