@@ -2,7 +2,7 @@
 using namespace std;
 //final formula
 double answer(double q,double total_probabilty_sum){
-    cout<<q;
+    
     double ans=(1/(q-1))*(1-total_probabilty_sum);
     return ans;
 }
@@ -53,7 +53,7 @@ double tsallis_Entropy(double window_size,string str,double q){
 int main(){
 string str="";
 ifstream input_value;
-input_value.open("input.csv");
+input_value.open("inp.csv");
 cout<<" The string is"<<" ";
 double q=2;
 //string input--------->
@@ -63,7 +63,7 @@ while(input_value.eof()==0){
     input_value.close();
 }
 ofstream output_value;
-output_value.open("Outputt.csv");
+output_value.open("out.csv");
 double window_size;
 cout<<"enter window size ";
 cin>>window_size;

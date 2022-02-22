@@ -30,11 +30,13 @@ int main()
     Input_value.open("input.csv");
     cout<<"the string is: ";
     
+    
     while(Input_value.eof()==0){
         getline(Input_value,str);
         cout<<str<<endl;
         Input_value.close();
     }
+    cout<<"size of string"<<str.size()<<endl;
 
     ofstream output;
     output.open("Outputt.csv");
