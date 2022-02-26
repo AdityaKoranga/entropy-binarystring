@@ -10,7 +10,6 @@ double calculateEntropy(string str,int start,int end,int window_size)
         
         if(str[i]=='1')
         count++;
-      
     }
     
     double probability=(double)count/double(window_size);
