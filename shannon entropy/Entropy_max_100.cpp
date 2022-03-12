@@ -18,7 +18,7 @@ double calculateEntropy(string str,int start,int end,int window_size)
     
     if(p==1)
         return 0;
-    return -((p) * log2f(p));
+    return (p) * ( (log2f(1/p)) );
 
     
 }
