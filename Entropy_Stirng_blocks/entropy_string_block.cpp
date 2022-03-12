@@ -50,7 +50,7 @@ int main()
 
     //** opening the input file **
     ifstream input;
-    input.open("taking_input.csv");
+    input.open("random_numbers_binary_edition.csv");
 
     //**putting all number blocks in a string and then pushing in a vector**
     while (!input.eof())
