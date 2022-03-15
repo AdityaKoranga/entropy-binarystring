@@ -1,14 +1,15 @@
 #include <bits/stdc++.h>
 using namespace std;
 // final formula
-double answer(double q, double total_probabilty_sum)
+double answer(double q, double total_probabilty_sum, double& sum)
 {
 
     double ans = (1 / (q - 1)) * (1 - total_probabilty_sum);
+    sum=sum+ans;
     return ans;
 }
 
-double tsallis_Entropy(string str, int start, int end, double window_size, double q)
+double tsallis_Entropy(string str, int start, int end, double window_size, double q,double& sum)
 {
 
     // to find total sum of probability
@@ -33,7 +34,7 @@ double tsallis_Entropy(string str, int start, int end, double window_size, doubl
     probability_of_1 = pow((count1 / window_size), q);
     total_probabilty_sum = probability_of_0 + probability_of_1;
 
-    return answer(q, total_probabilty_sum);
+    return answer(q, total_probabilty_sum,sum);
 }
 
 int main()
@@ -42,21 +43,23 @@ int main()
     ifstream input_value;
     input_value.open("inp.csv");
     cout << endl<< endl;
-    cout << " The string is"<< " ";
+    // cout << " The string is"<< " ";
 
     double q = 2;
     // string input--------->
     while (input_value.eof() == 0)
     {
         getline(input_value, str);
-        cout << str << endl;
+        // cout << str << endl;
         input_value.close();
     }
+    cout<<"the size of string is "<<str.size()<<endl;
     ofstream output_value;
     output_value.open("out.csv");
     double window_size;
     cout << "enter window size ";
     cin >> window_size;
+    double sum=0;
 
     // to find the no. of windows--->
     int no_ofWindows = 0;
@@ -66,12 +69,14 @@ int main()
             break;
         no_ofWindows++;
     }
+    cout<<"number of windows will be "<<no_ofWindows<<endl;
 
     for (int i = 0; i < no_ofWindows; i++)
     {
         output_value << "Tsallis entropy for window " << i + 1 <<  "is "<<
-                    tsallis_Entropy(str, i, window_size + i, window_size, q) << endl;
+                    tsallis_Entropy(str, i, window_size + i, window_size, q,sum) << endl;
     }
+    output_value<<endl<<"the average shannon entropy is "<< sum / no_ofWindows <<endl;
     output_value.close();
     return 0;
 }

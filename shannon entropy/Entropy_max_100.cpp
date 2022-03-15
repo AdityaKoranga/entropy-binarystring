@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-double calculateEntropy(string str,int start,int end,int window_size)
+double calculateEntropy(string str,int start,int end,int window_size,double& sum)
 {   
     
     int count=0;
@@ -18,7 +18,10 @@ double calculateEntropy(string str,int start,int end,int window_size)
     
     if(p==1)
         return 0;
-    return (p) * ( (log2f(1/p)) );
+    
+    double shan_entpy= -( (p) * ( log2f(p) ) );
+    sum=sum+shan_entpy;
+    return shan_entpy;
 
     
 }
@@ -27,18 +30,19 @@ int main()
     string str="";
     ifstream Input_value;
     Input_value.open("input.csv");
-    cout<<"the string is: ";
+    
     
     
     while(Input_value.eof()==0){
         getline(Input_value,str);
-        cout<<str<<endl;
+        // cout<<str<<endl;
         Input_value.close();
     }
-    cout<<"size of string"<<str.size()<<endl;
+    cout<<"size of string is "<<str.size()<<endl;
 
     ofstream output;
     output.open("Outputt.csv");
+    double sum=0;
     
     int no_of_entropies;
     int  window_size;
@@ -48,8 +52,10 @@ int main()
     window_size=str.size()-(no_of_entropies-1);
     cout<<"window size will be "<<window_size<<endl;
     for(int i=0;i<no_of_entropies;i++){
-        output<<"entropy "<<i+1<<"is "<<calculateEntropy(str,i, window_size+i, window_size)<<endl;
+        output<<"entropy "<<i+1<<"is "<<calculateEntropy(str,i, window_size+i, window_size,sum)<<endl;
     }
+    output<<endl<<"the average shannon entropy is "<< sum / no_of_entropies <<endl;
+    
 
     
     output.close();
