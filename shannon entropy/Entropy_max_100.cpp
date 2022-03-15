@@ -52,7 +52,7 @@ int main()
     window_size=str.size()-(no_of_entropies-1);
     cout<<"window size will be "<<window_size<<endl;
     for(int i=0;i<no_of_entropies;i++){
-        output<<"entropy "<<i+1<<"is "<<calculateEntropy(str,i, window_size+i, window_size,sum)<<endl;
+        output<<"entropy "<<i+1<<"is "<<setprecision(50)<<calculateEntropy(str,i, window_size+i, window_size,sum)<<endl;
     }
     output<<endl<<"the average shannon entropy is "<< sum / no_of_entropies <<endl;
     

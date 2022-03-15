@@ -73,7 +73,7 @@ int main()
 
     for (int i = 0; i < no_ofWindows; i++)
     {
-        output_value << "Tsallis entropy for window " << i + 1 <<  "is "<<
+        output_value << "Tsallis entropy for window " << i + 1 <<  "is "<<setprecision(50)<<
                     tsallis_Entropy(str, i, window_size + i, window_size, q,sum) << endl;
     }
     output_value<<endl<<"the average shannon entropy is "<< sum / no_ofWindows <<endl;
